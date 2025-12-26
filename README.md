@@ -740,38 +740,43 @@ joblib.dump(gb_pipe, os.path.join(EXPORT_DIR, "gb_churn_pipeline.pkl"))
 print("✅ Saved:", os.path.join(EXPORT_DIR, "gb_churn_pipeline.pkl"))
 
 
-# In[32]:
+# In[36]:
 
 
+import os
+import joblib
 import sklearn
-sklearn.__version__
+
+print("sklearn:", sklearn.__version__)
 
 
-# In[34]:
+# In[37]:
+
 
 
 dashboard_meta = {
     "suggested_model_from_cv": "Gradient Boosting",
     "roc_auc": 0.973,
     "best_threshold_by_f1": 0.30,
-    "best_threshold_precision": 0.76,
-    "best_threshold_recall": 0.93,
-    "best_threshold_f1": 0.84
+    "best_threshold_precision": 0.763636,
+    "best_threshold_recall": 0.933333,
+    "best_threshold_f1": 0.84,
+    "export_versions": {
+        "python": "3.11",
+        "sklearn": sklearn.__version__,
+    }
 }
 
 
-# In[35]:
+# In[38]:
 
 
-# -------------------------
-# 3) Export to your repo folder
-# -------------------------
 EXPORT_DIR = r"C:\Users\abouz\OneDrive\Desktop\For me\MBA\AI Strategy\travel-churn-portal"
 
 joblib.dump(gb_pipe, os.path.join(EXPORT_DIR, "gb_churn_pipeline.pkl"))
 joblib.dump(dashboard_meta, os.path.join(EXPORT_DIR, "dashboard_meta.pkl"))
 
-print("✅ Saved pkl files into:", EXPORT_DIR)
+print("✅ Pickles exported")
 
 
 
