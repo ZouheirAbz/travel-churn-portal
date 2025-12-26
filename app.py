@@ -28,6 +28,21 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+@st.cache_resource
+def load_model():
+    return joblib.load("gb_churn_pipeline.pkl")
+
+@st.cache_resource
+def load_meta():
+    return joblib.load("dashboard_meta.pkl")
+
+try:
+    model = load_model()
+    meta = load_meta()
+except Exception as e:
+    st.error(f"❌ Model load failed: {e}")
+    st.stop()
+    
 # ------------------------------------------------------------
 # Travel-themed CSS (clean + modern)
 # ------------------------------------------------------------
